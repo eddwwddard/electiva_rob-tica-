@@ -23,3 +23,17 @@ print("Radio (rho):", rho)
 print("Ángulo polar (theta):", np.degrees(theta)) 
 #convertir phi a grados 
 print("Ángulo azimutal (phi):", np.degrees(phi))  
+#conversion de las coordenadas rectangulares a cilindricas
+#calculo de r
+r=np.sqrt((9**2)+(12**2))
+#calculo de theta
+thetac=np.arctan(12/9)
+#calculo de z
+z=10
+#coordenadas cilindricas
+print("Coordenadas cilindricas: ")
+print("Radio (r):", r)
+#convertir thetac a grados
+print("Ángulo polar (thetac):", np.degrees(thetac)) 
+#imprimir z 
+print("z", z)  
