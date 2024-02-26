@@ -2,12 +2,17 @@
 import control #libreria para control
 import matplotlib.pyplot as plt #libreria para graficar
 import numpy as np
-num = [float(x) for x in input('ingrese los coeficientes del numerador separados por un espacio: ').split()] #instruccion para ingresar los datos del numerador y recorrer los puntos de tiempo y las respuestas del sistema
-den = [float(x) for x in input('ingrese los coeficientes del denominador separados por un espacio: ').split()] #instruccion para ingresar los datos del denominador y recorrer los puntos de tiempo y las respuestas del sistema
+#ingresar valores de la funcion de transferencia frecuencia natural, factor de amortiguamiento y ganancia
+gain=float(input("ingrese el valor de la ganancia: "))
+Wn=float(input("ingrese el valor de la frecuencia natural: "))
+z=float(input("ingrese el factor de amortiguamiento: "))
 
-if len(den) != 3:
-    print("la funcion de transferencia debe de ser de segundo orden ejecute nuevamente el programa")
-    exit()
+num = [(gain*(Wn**2))]
+den = [1,(2*z*Wn),(Wn**2)]
+
+#if len(den) != 3:
+#print("la funcion de transferencia debe de ser de segundo orden ejecute nuevamente el programa")
+#exit()
 
 #funcion de transferencia
 G = control.TransferFunction(num,den)
@@ -22,13 +27,23 @@ plt.title('respuesta temporal al escalon unitario')
 
 
 #tipo de sistema
-if np.iscomplex(y).any():   #verificacionde polos complejos puros
-    tipo = 'subamortiguado'
-elif np.allclose(y[-1],0):  #comprobacion de los valores de y para determinar si tienden a cero sin oscilacion
-    tipo = 'criticamente amortiguado'
-else:
-    tipo = 'amortiguado'  #caso en el cual el sistema tiende a cero pero con oscilaciones previas 
+if z==0:
+    tipo='oscilador puro'
+    print(tipo)
+if 0<z and z<1:
+    tipo='subamoriguado'
+    print(tipo) 
+if z==1:
+    tipo='criticamente amortiguado'
+    print(tipo)
+if z>1:
+    tipo='sobreamortiguado'
+    print(tipo)
+if z<0:   
+    tipo='inestable'
+    print(tipo)
 
+       
 plt.text(0.1, 0.9, f'tipo de sistema:{tipo}', transform = plt.gca().transAxes) #escribir sobre la grafica el tipo de sistema usando como referencia los ejes coordenados del grafico actual
 
 plt.grid()

@@ -1,36 +1,47 @@
 #Realice un programa que sume, reste, multiplique (producto punto y producto cruz) y divida dos
 #matrices previamente inicializadas.
 
-#importar libreria
-import numpy as np
+import numpy as npi #importamos biblioteca NumPy como asignacion np 
 
-#definicion de las matrices
-matriz_a = np.array([[1,5,3],[9,6,2],[2,5,8]])
-matriz_b = np.array([[8,12,24],[30,65,76],[11,32,8]])
+# en lugar de escribir numpy.array() podmeos escribir np.array()
+#NumPy es una de las bibliotecas más utilizadas en Python para realizar operaciones numéricas y matriciales de manera eficiente. 
+print('\nPUNTO 2-A')
+print('Realice un programa que sume, reste, multiplique (producto punto y producto cruz) y divida dos matrices previamente inicializadas:\n')
 
-#suma de las mareices
-suma = matriz_a+matriz_b
-print('suma:', suma)
+#Defino matrices
+Matriz_1 = npi.array([[1, 5, 3],[9, 6, 2],[2, 5, 8]])
+Matriz_2 = npi.array([[8, 12, 24],[30, 64, 76],[11, 32, 8]])
 
-#resta de las matrices
-resta = matriz_a-matriz_b
-print('resta:', resta)
+#matriz_a = np.array([[1,5,3],[9,6,2],[2,5,8]])
+#matriz_b = np.array([[8,12,24],[30,65,76],[11,32,8]])
 
-#producto matricial ab
-producto_matricialab = matriz_a @ matriz_b
-print('producto matricial ab:', producto_matricialab)
+#imprimo matricez
+print('Matriz #1:\n',Matriz_1)
+print('\n')
+print('Matriz #2:\n',Matriz_2)
+print('\n')
 
-#producto matricial ba
-producto_matricialba = matriz_b @ matriz_a
-print('producto matricial ba:', producto_matricialba)
+#Suma
+Suma_B = Matriz_1 + Matriz_2
+print('Suma de matriz (+):\n', Suma_B)
+print('\n')
 
-#division de las matrices
- #calculo del determinante de las matrices
-determinante_a = np.linalg.det(matriz_a)
-determinante_b = np.linalg.det(matriz_b)
- #division de la matriz a entre el determinante de b
-division_ab = matriz_a/determinante_b
-print('division_ab:', division_ab)
- #division de la matriz b entre el determinante de a   
-division_ba = matriz_b/determinante_a
-print('division_ba:', division_ba)
+#Resta
+Resta_C = Matriz_1 - Matriz_2
+print('Resta de matriz (-):\n', Resta_C)
+print('\n')
+
+#Prdoucto punto
+ProductoP = npi.dot(Matriz_1,Matriz_2)
+print('Producto punto (.):\n',ProductoP) #resultado es un punto en el examen 
+print('\n')
+
+#Producto cruz 
+ProductoC = npi.cross(Matriz_1,Matriz_2)
+print('Producto cruz (X):\n',ProductoC)  #
+print('\n')
+
+#Division
+Division_A = Matriz_1/Matriz_2
+print('Division de matriz (/):\n',Division_A)
+print('\n')

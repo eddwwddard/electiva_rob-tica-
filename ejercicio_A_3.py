@@ -4,13 +4,14 @@
 #importar libreria
 import numpy as np
 
+
 # definicion del vector de coordenadas rectangulares
 cord_rec = np.array([9, 12, 10])
 print('coordenadas rectangulares: ', cord_rec)
 
 #conversion de las coordenadas rectangulares a esfericas (rho, theta, phi)
  #calculo de rho
-rho = np.sqrt((9**2)+(12**2)+(10**2))
+rho = np.sqrt((cord_rec[0]**2)+(12**2)+(10**2))
  #calculo de theta
 theta = np.arccos(10/rho)
  #calculo de phi

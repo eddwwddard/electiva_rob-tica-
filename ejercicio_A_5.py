@@ -1,44 +1,51 @@
 #Realice en funciones las rotaciones en X, Y y Z, donde se tenga un parámetro de entrada (ángulo)
 #y un parámetro de salida (matriz).
 
-#importar libreria 
-import numpy as np
+import numpy as np   
 
-#funcion para realizar la rotacion en X
-def rotacion_x(matriz, angulo):
-    rad_angulo = np.radians(angulo)  #conversion del angulo de grados a radianes
-    matriz_de_rotacion = np.array([[1,0,0],[0,np.cos(rad_angulo),-np.sin(rad_angulo)],
-                                   [0,np.sin(rad_angulo),np.cos(rad_angulo)]]) #matriz de rotacion en el eje X
-    matriz_rotada = np.dot(matriz, matriz_de_rotacion)
-    return(matriz_rotada)
+print('\nPUNTO 5-A')
+print('Realice en funciones las rotaciones en X, Y y Z, donde se tenga un parámetro de entrada (ángulo) y un parámetro de salida (matriz).\n')
 
-#funcion para realizar la rotacion en Y
-def rotacion_y(matriz, angulo):
-    rad_angulo = np.radians(angulo)  #conversion del angulo de grados a radianes
-    matriz_de_rotacion = np.array([[np.cos(rad_angulo),0,np.sin(rad_angulo)],[0,1,0],
-                                   [-np.sin(rad_angulo),0,np.cos(rad_angulo)]]) #matriz de rotacion en el eje Y
-    matriz_rotada = np.dot(matriz, matriz_de_rotacion)
-    return(matriz_rotada)
+#Angulos de rotacion 
+angulo= np.pi/4  #45 grados 
 
-#funcion para realizar la rotacion en Z
-def rotacion_z(matriz, angulo):
-    rad_angulo = np.radians(angulo)  #conversion del angulo de grados a radianes
-    matriz_de_rotacion = np.array([[np.cos(rad_angulo),-np.sin(rad_angulo),0],[np.sin(rad_angulo),np.cos(rad_angulo),0],
-                                   [0,0,1]]) #matriz de rotacion en el eje Z
-    matriz_rotada = np.dot(matriz, matriz_de_rotacion)
-    return(matriz_rotada)
+print('Parametro de entrada: ',angulo,' 45° \n')
 
-matriz = np.array([[1,5,3],[2,8,9],[0,7,3]]) #matriz que se quiere rotar
-angl=45 #angulo de rotacion de la matriz
+def rotacion_x(angulo):
+    Cos_X = np.cos(angulo)  # Calculo del coseno del angulo 
+    Sin_X = np.sin(angulo)  # Calculo del seno del angulo
+    matriz_RX =  np.array([[1,     0,      0],
+                           [0, Cos_X, -Sin_X],
+                           [0, Sin_X, Cos_X ]])
+    return matriz_RX
 
-#matriz rotada en x
-rotada_x=rotacion_x(matriz,angl)
-print('la matriz rotada en el eje X con un angulo de ',angl,'° es:\n',rotada_x)
+def rotacion_y(angulo):
+    Cos_Y = np.cos(angulo)  # Calculo del coseno del angulo 
+    Sin_Y = np.sin(angulo)  # Calculo del seno del angulo
+    matriz_RY =  np.array([[ Cos_Y,    0,      Sin_Y],
+                           [     0,    1,          0],
+                           [-Sin_Y,    0,      Cos_Y]])
+    return matriz_RY
 
-#matriz rotada en y
-rotada_y=rotacion_y(matriz,angl)
-print('la matriz rotada en el eje Y con un angulo de ',angl,'° es:\n',rotada_y)
+def rotacion_z(angulo):
+    Cos_Z = np.cos(angulo)  # Calculo del coseno del angulo 
+    Sin_Z = np.sin(angulo)  # Calculo del seno del angulo
+    matriz_RZ =  np.array([[ Cos_Z,    -Sin_Z,      0],
+                           [ Sin_Z,     Cos_Z,      0],
+                           [     0,         0,      1]])
+    return matriz_RZ
 
-#matriz rotada en z
-rotada_z=rotacion_z(matriz,angl)
-print('la matriz rotada en el eje Z con un angulo de ',angl,'° es:\n',rotada_z)
+matriz_RX = rotacion_x(angulo)
+print('--Matriz Rotacion X--')
+print(matriz_RX)
+
+
+matriz_RY = rotacion_y(angulo)
+print('--Matriz Rotacion Y--')
+print(matriz_RY)
+print('\n')
+
+matriz_RZ = rotacion_z(angulo)
+print('--Matriz Rotacion Z--')
+print(matriz_RZ)
+print('\n')

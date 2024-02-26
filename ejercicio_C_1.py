@@ -9,18 +9,28 @@ import numpy as np
 #a,b=coeficiente de callendar y dusen del cambio del sensor con la temperatura 
 #parametros de la ecuacion de la PT100
 
-a = 3.9083e-3 # ohm/(ohm*°C) IEC 60751
-b = -5.775e-7 # ohm/(ohm*°C) IEC 60751
-R0 = 100 # ohm segun IEC 60751
+R= 100
+A= 3.9083e-3
+B= -5.775e-7
+C= -4.183e-12
+
 
 #definicion del rango de temperatura -200°C a 200°
-tem = np.linspace(-200, 200, 1000)
+T = np.linspace(-200, 200, 1000)
 
 #ecucacion de resistencia de la PT100
-res = R0*(1+a*tem+b*tem**2)
+# Función para calcular la resistencia en función de la temperatura
+def resistance(T):
+    if T >= 0:
+       return  R*(1+(A*T)+(B*(T**2)))
+    else:
+        return R*(1+(A*T)+(B*(T**2))+(C*((T-100)*T**3)))
+
+# Calcular la resistencia para cada temperatura en el rango dado
+res = np.array([resistance(temp) for temp in T])
 
 #grafica de ressitencia vs temperatura
-plt.plot(tem,res)
+plt.plot(T,res)
 plt.title ('comportamiento de la PT100')
 plt.xlabel('temperatura °C')
 plt.ylabel('resistencia ohms')

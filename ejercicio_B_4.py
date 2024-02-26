@@ -7,15 +7,15 @@ import numpy as np
 #funciones con la descricion de las articulaciones segun el tipo de motor
 def cilindrico():
     print("el robot cilindrico tiene tres articulaciones \n una rotacional para la base \n una prismatica para la altura \n una prismatica para el radio ")
-def carteciano():
-    print("el robot cartecioano tiene tres articulaciones prismaticas para desplazarce en los ejes X,Y y Z") 
+def cartesiano():
+    print("el robot cartesiano tiene tres articulaciones prismaticas para desplazarce en los ejes X,Y y Z") 
 def esferico():
     print("el robot esferico tiene tres articulaciones rotacionales para realizar dezplamientos y cambios en la orientacion del efector final")
 
 # variable para llamar la funcion correspondiente al robot deseado
 opciones = {
     '1': cilindrico,
-    '2': carteciano,
+    '2': cartesiano,
     '3': esferico,
 } 
  
